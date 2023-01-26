@@ -7,11 +7,13 @@
 
   // NEUTRAL COLORS
   --dark-gray: #635f5c;
+  --border-gray: rgb(230, 230, 230);
   --light-gray: #f2f2f2;
+  --bg: #fcfcfb;
   --white: #fff;
 
   // TYPOGRAPHY
-  --button-font-size: 1.6rem;
+  --body-font-size: 1.6rem;
   --major-font: "Outfit", sans-serif;
   --font-w-regular: 400;
   --font-w-medium: 500;
@@ -41,6 +43,7 @@ body {
   font-size: var(--button-font-size);
   line-height: 1;
   color: var(--font-dark);
+  font-size: var(--body-font-size);
 }
 
 html {
@@ -49,5 +52,168 @@ html {
 }
 
 *:focus-visible {
-  outline: 0.4rem solid rgba(241, 51, 76, 0.5);
+  outline: 0.3rem solid rgb(204, 204, 204);
+}
+
+.main {
+  max-width: 140rem;
+  background-color: var(--bg);
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+// EXTEND START
+%button-form {
+  border: none;
+  background: none;
+  color: var(--white);
+  text-transform: capitalize;
+  font-weight: var(--font-w-medium);
+  font-size: inherit;
+  font-family: inherit;
+  letter-spacing: 0.8px;
+  height: 4rem;
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+}
+// EXTEND END
+
+.todo {
+  // max-width: 120rem;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+    max-width: 120rem;
+    width: 100%;
+  }
+
+  &__new-task {
+    margin-right: auto;
+    width: 100%;
+    margin-right: 2rem;
+  }
+
+  &__label {
+    display: block;
+    font-size: 2rem;
+    padding-bottom: 0.5rem;
+    font-weight: var(--font-w-bold);
+  }
+
+  &__input {
+    // display: inline-block;
+    width: 100%;
+    height: 4rem;
+    padding: 0 1.5rem;
+    font-size: inherit;
+    font-family: inherit;
+    border: 2px solid var(--border-gray);
+  }
+
+  &__btn-add {
+    @extend %button-form;
+    background-color: var(--blue);
+    padding: 1rem 2rem;
+    // margin-right: 1.5rem;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  &__btn-update {
+    @extend %button-form;
+    background-color: var(--green);
+    padding: 1rem 1.8rem;
+    margin-right: 1.5rem;
+    display: none;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  &__btn-cancel {
+    @extend %button-form;
+    background-color: var(--light-orange);
+    padding: 1rem 1.8rem;
+    display: none;
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
+
+.tasks {
+  max-width: 120rem;
+  width: 100%;
+  margin: 0 auto;
+  &__select-all {
+    @extend %button-form;
+    background-color: var(--blue);
+    margin-right: 1.5rem;
+    height: 3rem;
+    padding: 0.5rem 1.5rem;
+  }
+
+  &__delete-selected {
+    @extend %button-form;
+    background-color: var(--blue);
+    height: 3rem;
+    padding: 0.5rem 1.5rem;
+    margin-right: 1.5rem;
+  }
+}
+
+.task {
+  background-color: var(--white);
+  border: 1px solid var(--border-gray);
+  display: flex;
+  justify-content: space-between;
+
+  &__form {
+  }
+  &__checkbox {
+  }
+
+  &__description {
+  }
+
+  &__btn-box {
+  }
+
+  &__btn-edit {
+    @extend %button-form;
+    background-color: var(--blue);
+    height: 3rem;
+    padding: 0.5rem 1.5rem;
+    margin-right: 1.5rem;
+    &--icon {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &__btn-delete {
+    @extend %button-form;
+    background-color: var(--blue);
+    height: 3rem;
+    padding: 0.5rem 1.5rem;
+
+    &--icon {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
 }

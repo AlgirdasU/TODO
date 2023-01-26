@@ -21,5 +21,68 @@
     <script defer src="script.js"></script>
     <title>TODO App</title>
   </head>
-  <body></body>
+  <body>
+    <main class="main">
+      <section class="todo">
+        <div class="todo__container">
+          <form action="#" class="todo__new-task">
+            <label for="name" class="todo__label">New Task</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              class="todo__input"
+              placeholder="Add a task..."
+            />
+          </form>
+          <button class="todo__btn-add" type="submit" value="Add">
+            add task
+          </button>
+          <button class="todo__btn-update" type="submit" value="Update">
+            Update
+          </button>
+          <button class="todo__btn-cancel" type="submit" value="Cancel">
+            Cancel
+          </button>
+        </div>
+
+        <div class="tasks">
+          <button class="tasks__select-all" type="submit">Select all</button>
+          <button class="tasks__delete-selected" type="submit">
+            Delete Selected
+          </button>
+
+          <!-- TASK -->
+          <div class="task">
+            <form action="#" class="task__form">
+              <input
+                type="checkbox"
+                name="task"
+                aria-label="checkbox"
+                class="task__checkbox"
+              />
+              <span class="task__description">dasdasdasdasdas</span>
+            </form>
+
+            <div class="task__btn-box">
+              <button class="task__btn-edit" type="submit">
+                <svg class="task__btn-edit--icon">
+                  <use xLink:href="../images/sprite.svg#edit-svgrepo-com"></use>
+                </svg>
+                Edit
+              </button>
+              <button class="task__btn-delete">
+                <svg class="task__btn-delete--icon">
+                  <use
+                    xLink:href="../images/sprite.svg#trash-svgrepo-com"
+                  ></use>
+                </svg>
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
