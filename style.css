@@ -1,9 +1,34 @@
+.task__btn-cancel, .task__btn-update, .task__btn-delete, .task__btn-edit, .tasks__delete-selected, .tasks__uncheck-all, .tasks__check-all, .todo__btn-add {
+  border: none;
+  background: none;
+  color: var(--white);
+  text-transform: capitalize;
+  font-weight: var(--font-w-bold);
+  font-size: inherit;
+  font-family: inherit;
+  letter-spacing: 0.8px;
+  height: 4rem;
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.task__btn-cancel--icon, .task__btn-update--icon, .task__btn-delete--icon, .task__btn-edit--icon {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
 :root {
   --green: #00bf9a;
   --red: #ed4357;
   --light-orange: #faa307;
   --blue: #118ab2;
   --dark-gray: #635f5c;
+  --gray: #e0e0e0;
   --border-gray: rgb(230, 230, 230);
   --light-gray: #f2f2f2;
   --bg: #fcfcfb;
@@ -55,28 +80,8 @@ html {
   background-color: var(--bg);
   display: grid;
   min-height: 100vh;
-  place-items: center;
   margin: 0 auto;
-  padding: 1rem;
-}
-
-.task__btn-delete, .task__btn-edit, .tasks__delete-selected, .tasks__select-all, .todo__btn-cancel, .todo__btn-update, .todo__btn-add {
-  border: none;
-  background: none;
-  color: var(--white);
-  text-transform: capitalize;
-  font-weight: var(--font-w-medium);
-  font-size: inherit;
-  font-family: inherit;
-  letter-spacing: 0.8px;
-  height: 4rem;
-  display: flex;
-  align-self: flex-end;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  cursor: pointer;
-  display: inline-block;
+  padding: 7rem 1rem 1rem;
 }
 
 .todo {
@@ -106,30 +111,19 @@ html {
   padding: 0 1.5rem;
   font-size: inherit;
   font-family: inherit;
+  outline: none;
   border: 2px solid var(--border-gray);
+  transition: all 200ms ease;
+}
+.todo__input:focus {
+  border: 2px solid var(--blue);
 }
 .todo__btn-add {
   background-color: var(--blue);
   padding: 1rem 2rem;
+  font-weight: var(--font-w-bold);
 }
 .todo__btn-add:hover {
-  opacity: 0.85;
-}
-.todo__btn-update {
-  background-color: var(--green);
-  padding: 1rem 1.8rem;
-  margin-right: 1.5rem;
-  display: none;
-}
-.todo__btn-update:hover {
-  opacity: 0.85;
-}
-.todo__btn-cancel {
-  background-color: var(--light-orange);
-  padding: 1rem 1.8rem;
-  display: none;
-}
-.todo__btn-cancel:hover {
   opacity: 0.85;
 }
 
@@ -138,17 +132,38 @@ html {
   width: 100%;
   margin: 0 auto;
 }
-.tasks__select-all {
-  background-color: var(--blue);
+.tasks__btn-box {
+  display: none;
+}
+.tasks__check-all {
+  background-color: var(--green);
   margin-right: 1.5rem;
   height: 3rem;
   padding: 0.5rem 1.5rem;
+  margin-bottom: 0.7rem;
+}
+.tasks__check-all:hover {
+  opacity: 0.85;
+}
+.tasks__uncheck-all {
+  background-color: var(--light-orange);
+  margin-right: 1.5rem;
+  height: 3rem;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 0.7rem;
+}
+.tasks__uncheck-all:hover {
+  opacity: 0.85;
 }
 .tasks__delete-selected {
-  background-color: var(--blue);
+  background-color: var(--red);
   height: 3rem;
   padding: 0.5rem 1.5rem;
   margin-right: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.tasks__delete-selected:hover {
+  opacity: 0.85;
 }
 
 .task {
@@ -156,25 +171,76 @@ html {
   border: 1px solid var(--border-gray);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  min-height: 4.4rem;
+  margin-top: 0.5rem;
+}
+.task__container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.task__form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.task__checkbox {
+  margin-left: 0.9rem;
+}
+.task__description {
+  margin: 0 1.5rem 0 0.5rem;
+  width: 100%;
+  outline: none;
+  padding: 0.6rem;
+}
+.task__description:focus {
+  box-shadow: inset 0 0 0 2px var(--gray);
+}
+.task__btn-box {
+  display: flex;
 }
 .task__btn-edit {
-  background-color: var(--blue);
   height: 3rem;
-  padding: 0.5rem 1.5rem;
-  margin-right: 1.5rem;
+  padding: 0.5rem 1rem;
+  margin-right: 0.7rem;
+  display: flex;
+  background-color: #faa307;
 }
-.task__btn-edit--icon {
-  width: 2rem;
-  height: 2rem;
+.task__btn-edit:hover {
+  opacity: 0.85;
 }
 .task__btn-delete {
-  background-color: var(--blue);
+  background-color: var(--red);
   height: 3rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  margin-right: 0.7rem;
 }
-.task__btn-delete--icon {
-  width: 2rem;
-  height: 2rem;
+.task__btn-delete:hover {
+  opacity: 0.85;
+}
+.task__btn-update {
+  background-color: var(--green);
+  height: 3rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  margin-right: 0.7rem;
+  display: none;
+}
+.task__btn-update:hover {
+  opacity: 0.85;
+}
+.task__btn-cancel {
+  background-color: var(--light-orange);
+  height: 3rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  margin-right: 0.7rem;
+  display: none;
+}
+.task__btn-cancel:hover {
+  opacity: 0.85;
 }
 
 /*# sourceMappingURL=style.css.map */

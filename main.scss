@@ -1,3 +1,4 @@
+@import "extend";
 :root {
   // PRIMARY COLORS
   --green: #00bf9a;
@@ -7,6 +8,7 @@
 
   // NEUTRAL COLORS
   --dark-gray: #635f5c;
+  --gray: #e0e0e0;
   --border-gray: rgb(230, 230, 230);
   --light-gray: #f2f2f2;
   --bg: #fcfcfb;
@@ -60,34 +62,11 @@ html {
   background-color: var(--bg);
   display: grid;
   min-height: 100vh;
-  place-items: center;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 7rem 1rem 1rem;
 }
-
-// EXTEND START
-%button-form {
-  border: none;
-  background: none;
-  color: var(--white);
-  text-transform: capitalize;
-  font-weight: var(--font-w-medium);
-  font-size: inherit;
-  font-family: inherit;
-  letter-spacing: 0.8px;
-  height: 4rem;
-  display: flex;
-  align-self: flex-end;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  cursor: pointer;
-  display: inline-block;
-}
-// EXTEND END
 
 .todo {
-  // max-width: 120rem;
   width: 100%;
 
   &__container {
@@ -112,43 +91,26 @@ html {
   }
 
   &__input {
-    // display: inline-block;
     width: 100%;
     height: 4rem;
     padding: 0 1.5rem;
     font-size: inherit;
     font-family: inherit;
+    outline: none;
     border: 2px solid var(--border-gray);
+    transition: all 200ms ease;
+
+    &:focus {
+      border: 2px solid var(--blue);
+    }
   }
 
   &__btn-add {
     @extend %button-form;
     background-color: var(--blue);
     padding: 1rem 2rem;
-    // margin-right: 1.5rem;
+    font-weight: var(--font-w-bold);
 
-    &:hover {
-      opacity: 0.85;
-    }
-  }
-
-  &__btn-update {
-    @extend %button-form;
-    background-color: var(--green);
-    padding: 1rem 1.8rem;
-    margin-right: 1.5rem;
-    display: none;
-
-    &:hover {
-      opacity: 0.85;
-    }
-  }
-
-  &__btn-cancel {
-    @extend %button-form;
-    background-color: var(--light-orange);
-    padding: 1rem 1.8rem;
-    display: none;
     &:hover {
       opacity: 0.85;
     }
@@ -159,20 +121,47 @@ html {
   max-width: 120rem;
   width: 100%;
   margin: 0 auto;
-  &__select-all {
+
+  &__btn-box {
+    display: none;
+  }
+
+  &__check-all {
     @extend %button-form;
-    background-color: var(--blue);
+    background-color: var(--green);
     margin-right: 1.5rem;
     height: 3rem;
     padding: 0.5rem 1.5rem;
+    margin-bottom: 0.7rem;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  &__uncheck-all {
+    @extend %button-form;
+    background-color: var(--light-orange);
+    margin-right: 1.5rem;
+    height: 3rem;
+    padding: 0.5rem 1.5rem;
+    margin-bottom: 0.7rem;
+
+    &:hover {
+      opacity: 0.85;
+    }
   }
 
   &__delete-selected {
     @extend %button-form;
-    background-color: var(--blue);
+    background-color: var(--red);
     height: 3rem;
     padding: 0.5rem 1.5rem;
     margin-right: 1.5rem;
+    margin-bottom: 1.2rem;
+    &:hover {
+      opacity: 0.85;
+    }
   }
 }
 
@@ -181,39 +170,109 @@ html {
   border: 1px solid var(--border-gray);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  min-height: 4.4rem;
+  margin-top: 0.5rem;
+
+  &__container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
 
   &__form {
+    display: flex;
+    align-items: center;
+    width: 100%;
   }
   &__checkbox {
+    margin-left: 0.9rem;
   }
 
   &__description {
+    margin: 0 1.5rem 0 0.5rem;
+    width: 100%;
+    outline: none;
+    padding: 0.6rem;
+
+    &:focus {
+      box-shadow: inset 0 0 0 2px var(--gray);
+    }
   }
 
   &__btn-box {
+    display: flex;
   }
 
   &__btn-edit {
     @extend %button-form;
-    background-color: var(--blue);
     height: 3rem;
-    padding: 0.5rem 1.5rem;
-    margin-right: 1.5rem;
+    padding: 0.5rem 1rem;
+    margin-right: 0.7rem;
+    display: flex;
+    background-color: #faa307;
+ 
+
+    &:hover {
+      opacity: 0.85;
+    }
+
     &--icon {
-      width: 2rem;
-      height: 2rem;
+      @extend %icon-form;
     }
   }
 
   &__btn-delete {
     @extend %button-form;
-    background-color: var(--blue);
+    background-color: var(--red);
     height: 3rem;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    margin-right: 0.7rem;
+    // display: none;
+
+    &:hover {
+      opacity: 0.85;
+    }
 
     &--icon {
-      width: 2rem;
-      height: 2rem;
+      @extend %icon-form;
+    }
+  }
+
+  &__btn-update {
+    @extend %button-form;
+    background-color: var(--green);
+    height: 3rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    margin-right: 0.7rem;
+    display: none;
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    &--icon {
+      @extend %icon-form;
+    }
+  }
+
+  &__btn-cancel {
+    @extend %button-form;
+    background-color: var(--light-orange);
+    height: 3rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    margin-right: 0.7rem;
+    display: none;
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    &--icon {
+      @extend %icon-form;
     }
   }
 }

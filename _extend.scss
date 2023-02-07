@@ -1,0 +1,27 @@
+// EXTEND BTN START
+%button-form {
+  border: none;
+  background: none;
+  color: var(--white);
+  text-transform: capitalize;
+  font-weight: var(--font-w-bold);
+  font-size: inherit;
+  font-family: inherit;
+  letter-spacing: 0.8px;
+  height: 4rem;
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+}
+// EXTEND BTN END
+
+// EDIT/DELETE ICONS
+%icon-form {
+  width: 1.8rem;
+  height: 1.8rem;
+ 
+}
