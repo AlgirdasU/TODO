@@ -1,4 +1,4 @@
-SIMPLE TODO App
+SIMPLE TODO App.
 This TODO app has ability to add, remove or edit tasks.
 
 ### Screenshot
